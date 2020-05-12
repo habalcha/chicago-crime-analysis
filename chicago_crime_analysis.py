@@ -378,6 +378,18 @@ def chicago_district_arrest_chi_squared_test():
     else: 
             print ("We fail to reject Ho, hence the two variables are independent")
             
+def heat_map_time(df):
+    plt.subplots(figsize=(20,20))
+    y_axis_labels = ['12-4am','4-8am','8am-12pm','12-4pm','4-8pm','8pm-12am'] 
+    sns.heatmap(chi_crime2,cmap="YlGnBu",linewidth =0.05,yticklabels = y_axis_labels)
+    plt.xlabel('\nType of Crimes',fontsize=30)
+    plt.ylabel('Total of Crime Types\n',fontsize=35)
+    plt.yticks(fontsize=25)
+    plt.xticks(fontsize=25)
+    plt.title(' Crime Rate By Time of Day \n',fontsize=35)
+    plt.subplots_adjust(bottom=0.45)
+    plt.savefig("Crime_Rate_By_Time_of_Day.png")   
+            
 #%%
        
 #load_sql()
@@ -428,6 +440,8 @@ chicago_crime_type_count(chi_crime)
 chicago_theft_crimes_and_arrests(chi_crime)
 #%%
 chicago_district_arrest_chi_squared_test()
+#%%
+heat_map_time(chi_crime)
 
 
 
